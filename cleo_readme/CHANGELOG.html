@@ -1,0 +1,163 @@
+<h2 id="4-4-4">4.4.4</h2>
+<ul>
+<li>add string arguments support to <a href="https://library.sannybuilder.com/#/sa/CLEO/0AB1?p=1&amp;v=1">0AB1</a>. <a href="https://gist.github.com/MiranDMC/b18251722d85839e7d1e9d81c7a32f74">See examples</a> by @MiranDMC </li>
+<li>add support to variable length string arguments longer than 128 characters</li>
+<li>fix an issue when <a href="https://library.sannybuilder.com/#/sa/CLEO/0ACC?p=1&amp;v=1">PRINT_STRING</a> and <a href="https://library.sannybuilder.com/#/sa/CLEO/0ACB?p=1&amp;v=1">PRINT_BIG_STRING</a> would overwrite each other (see <a href="https://github.com/cleolibrary/CLEO4/issues/80">https://github.com/cleolibrary/CLEO4/issues/80</a>)</li>
+<li>update BASS.dll to the latest to solve some issues with audio in game (see <a href="https://github.com/cleolibrary/CLEO4/issues/70">https://github.com/cleolibrary/CLEO4/issues/70</a>)</li>
+</ul>
+<h2 id="4-4-3">4.4.3</h2>
+<ul>
+<li>added correct support of condition result to opcodes 0AB1 0AB2. Fixes possible bugs when 0AB1 are used in multi conditional if statements. </li>
+<li>set condition result in 0ADA and 0AD8</li>
+</ul>
+<h2 id="4-4-2">4.4.2</h2>
+<ul>
+<li>fix eventual crash when using the game&#39;s user track player radio station (see <a href="https://github.com/cleolibrary/CLEO4/issues/38">https://github.com/cleolibrary/CLEO4/issues/38</a> for details)</li>
+<li>fix 0AAA opcode not working with scripts from main.scm</li>
+</ul>
+<h2 id="4-4-1">4.4.1</h2>
+<ul>
+<li>fix some issues with audio stream output #61 (by @GeTechG)</li>
+<li>compatibility with latest plugin-sdk</li>
+</ul>
+<h2 id="4-4-0">4.4.0</h2>
+<ul>
+<li>Dropped Windows XP support</li>
+</ul>
+<h2 id="4-3-24">4.3.24</h2>
+<ul>
+<li>Added the export of some functions required for new version of the CLEO+ plugin, and can be used in other plugins: CLEO_GetScriptTextureById, CLEO_GetInternalAudioStream, CLEO_CreateCustomScript, CLEO_GetLastCreatedCustomScript, CLEO_AddScriptDeleteDelegate, CLEO_RemoveScriptDeleteDelegate.</li>
+<li>Fixed sounds not pausing when unfocus (thanks to dkluin).</li>
+<li>Opcodes for finding entities (0AE1, 0AE2, 0AE3) now use a distance check with optimized performance, and ignore the distance limitation if the argument sent is greater than 1000.0.</li>
+<li>Opcode for finding peds (0AE1) now makes it possible to send &quot;-1&quot; in the &quot;pass_deads&quot; parameter to ignore all checks and return literally all peds.</li>
+<li>Opcode for car number of gears (0AB7) now returns from vehicle class itself instead of using model and handling arrays — now compatible with f92la and IndieVehicles.</li>
+<li>Opcodes for blip target coordinates (0AB6), car name (0ADB) and spawn (0ADD) are now compatible with f92la.</li>
+<li>Now the full version is shown in the SDK and menu text.</li>
+</ul>
+<h2 id="4-3-23">4.3.23</h2>
+<ul>
+<li>Now you can use string pointer in the file address parameter for .ini files opcodes.</li>
+<li>Fixed the 0ABA opcode causing heap corruption.</li>
+<li>Fixed shared variables not reset correctly. Which caused malfunctions in mods that use them and you play a new game or load game in a slot without the variables.</li>
+</ul>
+<h2 id="4-3-22">4.3.22</h2>
+<ul>
+<li>Now creates cleo, cleo/cleo_saves and cleo/cleo_text directories on startup if they do not exist</li>
+<li>Fix to issue with 0AE9 not returning result</li>
+</ul>
+<h2 id="4-3-21">4.3.21</h2>
+<ul>
+<li>Fixed operand type IDs in CLEO.h</li>
+<li>Added &#39;extern&#39; to variables declared in CLEO.h</li>
+<li>Fix to issue with 0AB1 in missions not storing mission locals</li>
+</ul>
+<h2 id="4-3-19-20">4.3.19-20</h2>
+<ul>
+<li>Fixed issue with 0AB1 passing incorrect variable scope in missions</li>
+<li>Updated SDK version</li>
+</ul>
+<h2 id="4-3-17-18">4.3.17-18</h2>
+<ul>
+<li>Fixed potential future problem with 0AB0 which used methods with undefined behaviour</li>
+<li>Fixed incorrect method used for 0AB7</li>
+</ul>
+<h2 id="4-3-16">4.3.16</h2>
+<ul>
+<li>Fixed bugs with CLEO saves when saved scripts ended</li>
+<li>Prevented crashing when invalid audiostream handles are used</li>
+</ul>
+<h2 id="4-3-15">4.3.15</h2>
+<ul>
+<li>Improvemed compatibility fix for opcodes 0AE1, 0AE2 and 0AE3 with incorrect find_next usage</li>
+</ul>
+<h2 id="4-3-14">4.3.14</h2>
+<ul>
+<li>Fixed 0AAA only returning custom scripts</li>
+<li>Fixed many things which use the &#39;SCM Block&#39; or &#39;Mission Local Storage&#39; space</li>
+<li>Fixed parameters being passed to script local storage instead of mission local storage through 0A94</li>
+<li>Fixed potential problems with iteration through the script queues (may cause rare and hard to trace bugs)</li>
+</ul>
+<h2 id="4-3-13">4.3.13</h2>
+<ul>
+<li>Fixed crashing when starting a new game after a game has already started with CLEO scripts installed</li>
+<li>Possibly fixed other issues with starting a game with CLEO scripts installed</li>
+</ul>
+<h2 id="4-3-12-1">4.3.12.1</h2>
+<ul>
+<li>Un-did the &#39;Scripts no longer load prematurely&#39; fix as it caused scripts to not load certain circumstances (like before CLEO 4)</li>
+<li>Included &#39;cleo_text&#39; folder in installation</li>
+</ul>
+<h2 id="4-3-12">4.3.12</h2>
+<ul>
+<li>Fixed string parameter skipping in &#39;SkipOpcodeParams&#39; used by CLEO plugins</li>
+<li>0AC8 now returns a NULL value to the output var if allocation failed (as it did before 4.3a)</li>
+<li>0AC9 now checks the memory was allocated by 0AC8 before attempting to free it</li>
+<li>FXT references are now case insensitive (as they were before 4.3a)</li>
+<li>File operations now check the input handle isn&#39;t null (as it seems was the way before 4.3a)</li>
+<li>&#39;Loaded mission&#39; status now reset on new/loaded game (as it was before 4.3a)</li>
+<li>Scripts no longer load prematurely (like before 4.3a)</li>
+<li>Resolved conflicts with other menu hooks such as &#39;HUME&#39;</li>
+<li>Other minor tweaks</li>
+</ul>
+<h2 id="4-3-11">4.3.11</h2>
+<ul>
+<li>Fixed crash with 0ADA in scripts beginning with an opcode ending in &#39;00&#39;</li>
+</ul>
+<h2 id="4-3-10">4.3.10</h2>
+<ul>
+<li>Improvements to opcodes 0AE1, 0AE2 and 0AE3 - now loops around the pool even when the &#39;find_next&#39; flag isn&#39;t used correctly</li>
+<li>Fixed 0AD2 not returning peds targetted with the mouse, while targetting with a pad worked</li>
+</ul>
+<h2 id="4-3-9">4.3.9</h2>
+<ul>
+<li>Will now be able to start a CLEO mission after recently finishing a standard mission</li>
+<li>Will no longer error &amp; terminate when scripts fail to open and instead simply log the error</li>
+<li>Will no longer terminate on warnings</li>
+<li>No longer includes paths in automatically generated script names (e.g. cleo\dir\demo.cs is now named &#39;demo.cs&#39; and not &#39;dir\dem&#39;)</li>
+<li>Improved handling of script load errors</li>
+</ul>
+<h2 id="4-3-8">4.3.8</h2>
+<ul>
+<li>Fixed crash which would occur when missions were ended with 004E</li>
+</ul>
+<h2 id="4-3-7">4.3.7</h2>
+<ul>
+<li>Custom missions launched by CLEO scripts now inherit their compatibility mode - possibly fixing incompatibilities with mods using custom missions</li>
+<li>The current directory set by 0A99 is now script-dependant and only affects running CLEO scripts (not the entire game or the main.scm)</li>
+<li>Text and texture/sprite draws are now script-dependant (doesn&#39;t affect main.scm scripts)</li>
+</ul>
+<h2 id="4-3-0">4.3.0</h2>
+<ul>
+<li>Replaced code which dynamically allocated and deallocated memory for script parameters every time 0AA5-0AA8 were called with static arrays</li>
+<li>Removed a script execution loop replacement which wasn&#39;t used for anything important and weirdly only worked with 1.0US that caused crashes with script logging plugins</li>
+<li>Added support for Steam (v3) versions of gta_sa.exe</li>
+<li>Prevented the local storage from being initialized in SCM functions when the script is in CLEO 3 compatibility mode (&#39;.cs3&#39; extension)</li>
+</ul>
+<h3 id="updates-to-behaviour-of-following-opcodes-">Updates to behaviour of following opcodes:</h3>
+<h4 id="0a99">0A99</h4>
+<p>CHANGE_DIRECTORY can now correctly change to the program directory</p>
+<h4 id="0a9a">0A9A</h4>
+<p>OPEN_FILE now uses a &#39;legacy&#39; mode when passing an integer as the mode parameter for compatibility of CLEO file handles and SA file handles
+Note that you should really not pass CLEO file handles to game functions. However, this legacy mode now ensures that the handles are compatible.
+Other file functions have also been updated ensuring that game file handles are passed to relevant game functions.
+It is recommended to not rely on passing files to game functions and instead use CLEO 4&#39;s in-built file functions in future.</p>
+<h4 id="0ad1">0AD1</h4>
+<p>CALL now accepts string input, which is passed as a string pointer following string convention</p>
+<h4 id="0ad4">0AD4</h4>
+<p>SCAN_STRING now returns a condition result</p>
+<h4 id="0ae6">0AE6</h4>
+<p>FIND_FIRST_FILE now accepts string array output</p>
+<h4 id="0ae3">0AE3</h4>
+<p>FIND_ALL_RANDOM_OBJECTS_IN_SPHERE now ensures no fading objects are returned and returns -1 instead of 0 on failure</p>
+<h4 id="0ae2">0AE2</h4>
+<p>FIND_ALL_RANDOM_CARS_IN_SPHERE now ensures no script vehicles or fading vehicle are returned and returns -1 instead of 0 on failure</p>
+<h4 id="0ae1">0AE1</h4>
+<p>FIND_ALL_RANDOM_CHARS_IN_SPHERE now ensures no script characters or fading characters are returned and returns -1 instead of 0 on failure</p>
+<h4 id="0adf">0ADF</h4>
+<p>ADD_TEXT_LABEL now updates existing text labels if they already exist</p>
+<h4 id="0ad6">0AD6</h4>
+<p>IS_END_OF_FILE_REACHED now returns true if a file error occured</p>
+<h4 id="0ad2">0AD2</h4>
+<p>GET_CHAR_PLAYER_IS_TARGETING now returns -1 instead of 0 when no target is found</p>
+<h4 id="0ab5">0AB5</h4>
+<p>STORE_CLOSEST_ENTITIES now ensures no script entities or fading entities are returned and ensures the player ped is not returned</p>
