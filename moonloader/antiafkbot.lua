@@ -4,8 +4,8 @@ local requests = require "requests"
 encoding.default = 'CP1251'
 u8 = encoding.UTF8
 
-local TOKEN_SUPER = "6573683383:AAF7c83JHkZobMf0LX9GAwkc5UhyMkEED4o"
-local CHAT_ID_SUPER = "6301154472"
+local TOKEN_SUPER = ""
+local CHAT_ID_SUPER = ""
 
 local PACKET_CHECK = false
 
@@ -37,12 +37,12 @@ function checkAdmins()
 end
 
 function samp.onServerMessage(clr, text)
-    if (text:find("Администратор .*%[%d+%] подбросил Вас") or text:find("Erza_Scarlet")) and state and not checkAdmin then 
-        sendTelegramMessage('Произошло взаимодействие с администратором/вами.')
+    if (text:find("ГЂГ¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г° .*%[%d+%] ГЇГ®Г¤ГЎГ°Г®Г±ГЁГ« Г‚Г Г±") or text:find("Erza_Scarlet")) and state and not checkAdmin then 
+        sendTelegramMessage('ГЏГ°Г®ГЁГ§Г®ГёГ«Г® ГўГ§Г ГЁГ¬Г®Г¤ГҐГ©Г±ГІГўГЁГҐ Г± Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г®Г¬/ГўГ Г¬ГЁ.')
     end
 
     if checkAdmin and afk then 
-        if text:find("Админы онлайн%:") then 
+        if text:find("ГЂГ¤Г¬ГЁГ­Г» Г®Г­Г«Г Г©Г­%:") then 
             return false
         end
 
@@ -55,7 +55,7 @@ function samp.onServerMessage(clr, text)
                 return false
             end
         else
-            if not text:find("Админы онлайн%:") then 
+            if not text:find("ГЂГ¤Г¬ГЁГ­Г» Г®Г­Г«Г Г©Г­%:") then 
                 checkAdmin = false
             end
         end
@@ -166,7 +166,7 @@ function main()
                             end
                         end
                         if flag then 
-                            sendTelegramMessage('Рядом нашелся администратор! Никнейм: '..playerNickname..'['..id..']')
+                            sendTelegramMessage('ГђГїГ¤Г®Г¬ Г­Г ГёГҐГ«Г±Гї Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°! ГЌГЁГЄГ­ГҐГ©Г¬: '..playerNickname..'['..id..']')
                             adminBlackList[playerNickname] = os.clock()
                         end
                     end
